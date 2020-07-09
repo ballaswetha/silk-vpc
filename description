@@ -1,0 +1,20 @@
+VPC Logs
+- volume
+- versions 
+- collection and parsing
+
+SiLK 
+- Why SiLK 
+    - efficient storage 
+    - Can store logs for a longer duration
+    - Can go back in time, convert to ascii, and ingest to Kibana (retrospective)
+- Front-end analytics (only) with Kibana
+    - 30 days, 60 days, 90 days
+    - unusual ports, enriched IPs? 
+    - what else? 
+- 1 day logs (ascii) 
+
+Architecture diagram
+
+TODO:
+- Default settings 
