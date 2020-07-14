@@ -16,5 +16,25 @@ SiLK
 
 Architecture diagram
 
+Queries:
+Display information about the SiLK file
+`rwfileinfo vpc.rw`
+
+Output the top 10 records from the SiLK file
+`rwcut vpc.rw --num-recs=10` 
+
+Filter for events where one port is 80 and the other is ephemeral. 
+`rwfilter vpc.rw --aport=80 --pass=stdout | rwfilter --input-pipe=stdin --aport=1024-65535 | rwcut | more`
+
+Split traffic into 30 minutes (1800 secs) bins
+`rwfilter vpc.rw --all=stdout | rwcount --bin-size=1800`
+
+Output the number of records that match a specific filter 
+`rwfilter vpc.rw --all=stdout | rwuniq --field=sip,proto --bytes --packets`
+
+
 TODO:
 - Default settings 
+
+References:
+* Network Security Through Data Analysis: From Data to Action
