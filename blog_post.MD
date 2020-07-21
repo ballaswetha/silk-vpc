@@ -62,7 +62,7 @@ Output the number of records that match a specific filter
 `rwfilter vpc.rw --all=stdout | rwuniq --field=sip,proto --bytes --packets`
 
 
-QN: Possible to identify things like 
+QN: Possible to identify things like use of dnscat, can't find a duration field in vpcflow :( 
 
 
 ## Use-cases 
@@ -75,6 +75,8 @@ QN: Possible to identify things like
 * SiLK - https://tools.netsa.cert.org/silk/
 * yet another flow collection (yaf) - https://tools.netsa.cert.org/yaf/index.html 
 * Overview of VPC Flow logs - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
+* FlowBAT - https://github.com/chrissanders/FlowBAT
+* FlowPlotter - https://github.com/automayt/FlowPlotter
 * Network Security Through Data Analysis: From Data to Action - https://www.amazon.com/Network-Security-Through-Data-Analysis/dp/1491962844
 
 
