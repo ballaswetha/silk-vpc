@@ -71,7 +71,7 @@ QN: Possible to identify things like use of dnscat, can't find a duration field 
 ## Potential next steps
 * Investigate the addition of new fields to SiLK using SiLK plugins - https://tools.netsa.cert.org/silk/silk-plugin.html
 
-#### References
+## References
 * SiLK - https://tools.netsa.cert.org/silk/
 * yet another flow collection (yaf) - https://tools.netsa.cert.org/yaf/index.html 
 * Overview of VPC Flow logs - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
@@ -80,6 +80,7 @@ QN: Possible to identify things like use of dnscat, can't find a duration field 
 * Network Security Through Data Analysis: From Data to Action - https://www.amazon.com/Network-Security-Through-Data-Analysis/dp/1491962844
 
 
+# DELETE AT THE END .... 
 ----- ROUGH NOTES ----- 
 VPC Logs
 - volume
