@@ -46,6 +46,11 @@ A detailed description of all the flow logs records from the VPC Flow logs is av
 | sublocation-id | 4 | N/A | 
 
 ## Architecture and set-up
+
+![vSiLK architecture.svg](vSiLK architecture.svg)
+
+
+## Use-cases 
 Display information about the SiLK file
 `rwfileinfo vpc.rw`
 
@@ -63,9 +68,6 @@ Output the number of records that match a specific filter
 
 
 QN: Possible to identify things like use of dnscat, can't find a duration field in vpcflow :( 
-
-
-## Use-cases 
 
 
 ## Potential next steps
