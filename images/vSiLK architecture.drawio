@@ -1,6 +1,6 @@
-<mxfile modified="2020-08-03T02:18:52.510Z" host="app.diagrams.net" agent="5.0 (X11)" etag="SVnEZolGsHHMU4WzJ23_" version="13.4.9" type="gitlab">
+<mxfile modified="2020-08-03T06:16:45.589Z" host="app.diagrams.net" agent="5.0 (X11)" etag="FEyzKBgZUc1S7G3bxqFj" version="13.4.9" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1547" dy="831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+    <mxGraphModel dx="1315" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -31,14 +31,17 @@
         <mxCell id="o8gPVCex7NLgK0Pj0_RW-6" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#5A30B5;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.flow_logs;" parent="1" vertex="1">
           <mxGeometry x="248.5" y="425.5" width="78" height="78" as="geometry" />
         </mxCell>
+        <mxCell id="bL2OYi6fTM-XV55zECfy-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="o8gPVCex7NLgK0Pj0_RW-7" target="bL2OYi6fTM-XV55zECfy-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="o8gPVCex7NLgK0Pj0_RW-7" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="1" vertex="1">
           <mxGeometry x="448.5" y="282.5" width="78" height="78" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-1" value="&lt;font face=&quot;Garamond&quot;&gt;container - rwsender&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
-          <mxGeometry x="658.5" y="208" width="60" height="60" as="geometry" />
+          <mxGeometry x="850" y="216.5" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-2" value="&lt;font face=&quot;Garamond&quot;&gt;container - rwreceiver&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
-          <mxGeometry x="658.5" y="388" width="60" height="60" as="geometry" />
+          <mxGeometry x="850" y="396.5" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-4" value="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="168.5" y="170" width="40" height="38" as="geometry" />
@@ -47,10 +50,10 @@
           <mxGeometry x="378.5" y="219" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-7" value="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="553.5" y="249.5" width="40" height="38" as="geometry" />
+          <mxGeometry x="558.5" y="272.5" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-8" value="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="710" y="191.5" width="40" height="38" as="geometry" />
+          <mxGeometry x="891.5" y="200" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-14" value="VPC" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="67.5" y="252.5" width="40" height="20" as="geometry" />
@@ -103,16 +106,10 @@
             <mxPoint x="298.5" y="260.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4NLjydOKsZYuCcSBGG9q-28" value="" style="endArrow=classic;html=1;" parent="1" target="4NLjydOKsZYuCcSBGG9q-1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="526.5" y="329" as="sourcePoint" />
-            <mxPoint x="648.5" y="329" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-29" value="" style="endArrow=classic;html=1;" parent="1" target="4NLjydOKsZYuCcSBGG9q-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="688.5" y="287.5" as="sourcePoint" />
-            <mxPoint x="799.5" y="291" as="targetPoint" />
+            <mxPoint x="880" y="296" as="sourcePoint" />
+            <mxPoint x="991" y="299.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-30" value="VPC Flow logs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
@@ -124,7 +121,7 @@
         <mxCell id="4NLjydOKsZYuCcSBGG9q-32" value="VPC Flow logs" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="240.5" y="252.5" width="100" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="4NLjydOKsZYuCcSBGG9q-33" value="S3 - centralised log repository" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
+        <mxCell id="4NLjydOKsZYuCcSBGG9q-33" value="S3 log repository" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="437.5" y="371.5" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
@@ -148,20 +145,33 @@
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-14" value="&lt;font face=&quot;Garamond&quot;&gt;Publish the VPC Flow logs to AWS S3, which acts as the centralised log repository for all the flow logs from multiple accounts. &lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="113" y="630.5" width="981.5" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Send the raw VPC flow logs to the container &quot;rwsender&quot; using fluentd for processing and conversion into SiLK format. &lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="113" y="690.5" width="981.5" height="117" as="geometry" />
+        <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Subscribe S3 events to SQS. Once files from S3 are processed, these are deleted from the Queue.&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="113" y="690.5" width="981.5" height="39.5" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="&lt;span&gt;Send the raw logs to the container &quot;rwreceiver&quot; which can then be used by the analyst for querying historical logs. The &quot;rwreceiver&quot; container also includes an installation of FlowBAT and FlowPlotter to provide analysts a GUI view of the data. &lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="109.5" y="826.5" width="981.5" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" vertex="1" parent="1">
+        <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="61" y="830" width="40" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="&lt;font color=&quot;#FF3333&quot;&gt;Python script running as a daemon to monitor the directory that the raw VPC flow logs are ingested into, converts these raw logs into&amp;nbsp; SiLK format and stores them in a directory that &quot;rwreceiver&quot; monitors. &lt;/font&gt;&lt;font color=&quot;#FF3333&quot;&gt;&lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into&lt;br/&gt; a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous &lt;br/&gt;records that are logged in the VPC Flow log. &lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" vertex="1" parent="1">
+        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="Python script running as a daemon to read SQS events for new vpc log files, convert these raw logs into&amp;nbsp; SiLK format and store them in a directory that &quot;rwreceiver&quot; monitors. &lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow log. &lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="113" y="750.5" width="981.5" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="V7TMuckfEKck8YOUJduE-3" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" vertex="1" parent="1">
-          <mxGeometry x="700" y="322.5" width="40" height="38" as="geometry" />
+        <mxCell id="V7TMuckfEKck8YOUJduE-3" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
+          <mxGeometry x="890" y="323.5" width="40" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="bL2OYi6fTM-XV55zECfy-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bL2OYi6fTM-XV55zECfy-1" target="4NLjydOKsZYuCcSBGG9q-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="669" y="247" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bL2OYi6fTM-XV55zECfy-1" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#F34482;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="630" y="282.5" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="bL2OYi6fTM-XV55zECfy-2" value="SQS - Queue for managing file ingestion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" vertex="1" parent="1">
+          <mxGeometry x="608.5" y="371.5" width="121" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
