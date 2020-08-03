@@ -47,7 +47,7 @@ A detailed description of all the flow logs records from the VPC Flow logs is av
 
 ## Architecture and set-up
 
-![vSiLK architecture.svg](vSiLK architecture.svg)
+![vSiLK architecture.svg](images/vSiLK architecture.svg)
 
 
 ## Use-cases 

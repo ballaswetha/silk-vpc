@@ -21,17 +21,9 @@ pip install --upgrade pyod
 cd /opt
 wget https://tools.netsa.cert.org/releases/silk-3.19.1.tar.gz
 wget https://tools.netsa.cert.org/releases/libfixbuf-2.4.0.tar.gz
-wget https://tools.netsa.cert.org/releases/yaf-2.11.0.tar.gz
-wget https://tools.netsa.cert.org/releases/netsa-python-1.5.tar.gz
-wget https://tools.netsa.cert.org/releases/rayon-1.4.3.tar.gz 
-wget https://tools.netsa.cert.org/releases/isilk-0.6.2.tar.gz
 
 tar -zxf libfixbuf-2.4.0.tar.gz 
 tar -zxf silk-3.19.1.tar.gz 
-tar -zxf yaf-2.11.0.tar.gz 
-tar -xvf netsa-python-1.5.tar.gz 
-tar -xvf rayon-1.4.3.tar.gz 
-tar -xvf isilk-0.6.2.tar.gz 
 
 cd /opt/libfixbuf-2.4.0
 ./configure --prefix=/usr/local --enable-silent-rules
@@ -42,20 +34,6 @@ cd /opt/silk-3.19.1
 ./configure --prefix=/usr/local --enable-silent-rules --enable-data-rootdir=/var/silk/data --enable-ipv6 --enable-ipset-compatibility=3.14.0 --enable-output-compression --with-python --with-python-prefix
 make
 make install
-
-cd /opt/yaf-2.11.0
-./configure --prefix=/usr/local --enable-silent-rules --enable-applabel --enable-metadata --enable-plugins
-make
-make install
-
-cd /opt/netsa-python-1.5
-python setup.py install 
-
-cd /opt/rayon-1.4.3
-sudo python setup.py install 
-
-cp /yaf-2.11.0/etc/init.d/yaf /etc/init.d/yaf
-chmod a+x /etc/init.d/yaf
 
 touch /etc/ld.so.conf.d/silk.conf
 echo "
