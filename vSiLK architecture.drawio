@@ -1,6 +1,6 @@
-<mxfile modified="2020-07-21T05:37:47.488Z" host="app.diagrams.net" agent="5.0 (X11)" etag="leHTHteMnn2i0r_vDMPF" version="13.4.9" type="gitlab">
+<mxfile modified="2020-08-03T02:18:52.510Z" host="app.diagrams.net" agent="5.0 (X11)" etag="SVnEZolGsHHMU4WzJ23_" version="13.4.9" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1315" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+    <mxGraphModel dx="1547" dy="831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -50,7 +50,7 @@
           <mxGeometry x="553.5" y="249.5" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-8" value="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="698.5" y="323.5" width="40" height="38" as="geometry" />
+          <mxGeometry x="710" y="191.5" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-14" value="VPC" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="67.5" y="252.5" width="40" height="20" as="geometry" />
@@ -65,7 +65,7 @@
           <mxGeometry x="68.5" y="388" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-18" value="...." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="78.5" y="394" width="40" height="20" as="geometry" />
+          <mxGeometry x="267.5" y="388" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-22" value="" style="endArrow=classic;html=1;" parent="1" source="o8gPVCex7NLgK0Pj0_RW-1" target="o8gPVCex7NLgK0Pj0_RW-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -128,7 +128,7 @@
           <mxGeometry x="437.5" y="371.5" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EAEDED;fontSize=22;fontColor=#FFFFFF;strokeColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="40" y="551" width="1080" height="269" as="geometry" />
+          <mxGeometry x="40" y="551" width="1080" height="319" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-4" value="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="58" y="563" width="40" height="38" as="geometry" />
@@ -140,7 +140,7 @@
           <mxGeometry x="61" y="692" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-7" value="4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="62.5" y="764.5" width="40" height="38" as="geometry" />
+          <mxGeometry x="62.5" y="752.5" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-13" value="&lt;font face=&quot;Garamond&quot;&gt;Collection of VPC Flow logs from different VPCs. These VPCs could also be present in multiple AWS accounts. Create VPC Flow logs per ENI (Elastic Network Interface), which plays the role of the &quot;sensor&quot; as mapped to SiLK terminology.&amp;nbsp; &lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="109.5" y="562.5" width="980.5" height="118" as="geometry" />
@@ -148,11 +148,20 @@
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-14" value="&lt;font face=&quot;Garamond&quot;&gt;Publish the VPC Flow logs to AWS S3, which acts as the centralised log repository for all the flow logs from multiple accounts. &lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="113" y="630.5" width="981.5" height="115" as="geometry" />
         </mxCell>
-        <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Send the raw VPC flow logs to the container &quot;rwsender&quot; using fluentd for processing and conversion into SiLK format. The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow log. &lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
+        <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Send the raw VPC flow logs to the container &quot;rwsender&quot; using fluentd for processing and conversion into SiLK format. &lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="113" y="690.5" width="981.5" height="117" as="geometry" />
         </mxCell>
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="&lt;span&gt;Send the raw logs to the container &quot;rwreceiver&quot; which can then be used by the analyst for querying historical logs. The &quot;rwreceiver&quot; container also includes an installation of FlowBAT and FlowPlotter to provide analysts a GUI view of the data. &lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
-          <mxGeometry x="114.5" y="765" width="981.5" height="121" as="geometry" />
+          <mxGeometry x="109.5" y="826.5" width="981.5" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="61" y="830" width="40" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="&lt;font color=&quot;#FF3333&quot;&gt;Python script running as a daemon to monitor the directory that the raw VPC flow logs are ingested into, converts these raw logs into&amp;nbsp; SiLK format and stores them in a directory that &quot;rwreceiver&quot; monitors. &lt;/font&gt;&lt;font color=&quot;#FF3333&quot;&gt;&lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into&lt;br/&gt; a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous &lt;br/&gt;records that are logged in the VPC Flow log. &lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" vertex="1" parent="1">
+          <mxGeometry x="113" y="750.5" width="981.5" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="V7TMuckfEKck8YOUJduE-3" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="700" y="322.5" width="40" height="38" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
