@@ -24,7 +24,6 @@ create_silk_conf = None
 update_silk_conf = None 
 sqs_file_mgmt = None 
 
-#TODO - need to run this continually ... 
 def get_vpcflow_file():
     """
     Function to read S3 events from the designated SQS queue, download the VPC Flow log file associated with the S3 event and then delete the event if the file is downloaded successfully 
@@ -33,6 +32,7 @@ def get_vpcflow_file():
     REGION_NAME = os.environ.get("REGION_NAME")
     AWS_PROFILE = os.environ.get("AWS_PROFILE")
 
+    #TODO - how long does a session last for?
     """ Create an AWS session """
     try:
         session = boto3.Session(profile_name=AWS_PROFILE, region_name=REGION_NAME)
@@ -42,8 +42,11 @@ def get_vpcflow_file():
     sqs_queue_handle = SQSFileManagement(session,SQS_QUEUE_NAME)
     local_file_path = sqs_queue_handle.manage_s3_events()
 
-def parse_vpc_logs(vpc_file_name, rwtxt_file_name, rw_file_name):
-    parse_vpc_logs = ParseVPC(vpc_file_name, rwtxt_file_name, rw_file_name)
+    return local_file_path
+
+def parse_vpc_logs(vpc_file_name):
+    acct_eni_dictionary = {}
+    parse_vpc_logs = ParseVPC(vpc_file_name)
     acct_eni_dictionary = parse_vpc_logs.parse_vpc()
 
 def silk_conf(silk_config_file_name, acct_eni_dictionary):
@@ -82,8 +85,13 @@ def create_silk_file():
 
 if __name__ == "__main__":
     response = load_dotenv()
-    #TODO parse hourly and create rw files - directory structure needs to change 
-    #parse_vpc_logs("/Users/swetha.balla/flow_log/rwtxt_sample.log", "/Users/swetha.balla/flow_log/rwsample_clean.log", "/Users/swetha.balla/flow_log/rw_sample.rw")
-    #parse_vpc_logs("/Users/swetha.balla/flow_log/rwtxt_sample.log", "/Users/swetha.balla/flow_log/rwsample_clean.log", "/Users/swetha.balla/flow_log/rw_sample.rw")
     #silk_conf("/Users/swetha.balla/flow_log/silk.conf", acct_eni_dictionary)
-    get_vpcflow_file()
+    while True: 
+        vpc_file = get_vpcflow_file()
+        if vpc_file:
+            parse_vpc_logs(vpc_file)
+        #TODO - check if the "hourly" vpc_ascii file is created; if it is then update silk.conf and run through rwtuc 
+        time.sleep(60) #Sleep for 1 minute TODO - is this required?
+    
+    #TODO - add a log / error message for when the loop breaks 
+    #TODO - add proper logging 
