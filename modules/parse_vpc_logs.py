@@ -1,6 +1,7 @@
 # -*- coding: utf-8 *-*
 import sys
 import os
+import gzip 
 
 from dotenv import load_dotenv
 
@@ -49,43 +50,47 @@ class ParseVPC:
             vpc_parsed_ascii_append = "_" + timestamp[0] + "." + timestamp[1][:2] # This retrieves the timestamp from the file, the ENI value needs to be prepended to 
             vpc_file_dir = LOCAL_DIR + timestamp[0][:4] + "/" + timestamp[0][4:6] + "/" + timestamp[0][6:8] + "/" # Directory structure LOCAL_DIR/YYYY/MM/DD 
             
-            with open(self.vpc_file_name, "r") as vpc_filehandle:
-                next(vpc_filehandle) # ignore the first line of the vpcflow file which has header information
-                for event in vpc_filehandle:
-                    """ Lists split in order of attributes = [version, account-id, interface-id, srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, start, end, action, log-status] and the corresponding value can be read using the index value from the list """
-                    event_list = event.split(" ")
-                    try: 
-                        """ Convert string into a format that can be written; ignore events with "SKIPDATA" as the log-status """ 
-                        if str(event_list[13].strip()) not in ("NODATA", "SKIPDATA"): # Ignore any events where there is NODATA or SKIPDATA in the VPC Flow log
-                            event_line = event_list[3] + "|" + event_list[4] + "|" + event_list[5] + "|" + event_list[6] + "|" + event_list[7] + "|" + event_list[8] + "|" + event_list[9] + "|" + event_list[10] + "|" + event_list[11] + "|" + event_list[2] + "\n"
-                            if event_list[2] == "interface-id":
-                                pass
-                            else: 
-                                vpc_parsed_ascii_filename = vpc_file_dir + event_list[2] + vpc_parsed_ascii_append # Prepend the ENI name to the file with the timestamp
-                                
-                                if os.path.isdir(vpc_file_dir): # Check if the directory for the right time already exists 
-                                    if os.path.isfile(vpc_parsed_ascii_filename): # File already exists for the hour and ENI, append to existing file
-                                        rwtxt_filehandle = open(vpc_parsed_ascii_filename, "a+")
-                                        rwtxt_filehandle.write(event_line) # Add the processed event 
-                                        rwtxt_filehandle.close()
+            try: 
+                with gzip.open(self.vpc_file_name, 'r') as vpc_filehandle:
+                    next(vpc_filehandle) # ignore the first line of the vpcflow file which has header information
+                    for event in vpc_filehandle:
+                        """ Lists split in order of attributes = [version, account-id, interface-id, srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, start, end, action, log-status] and the corresponding value can be read using the index value from the list """
+                        event_list = event.split(" ")
+                        try: 
+                            """ Convert string into a format that can be written; ignore events with "SKIPDATA" as the log-status """ 
+                            if str(event_list[13].strip()) not in ("NODATA", "SKIPDATA"): # Ignore any events where there is NODATA or SKIPDATA in the VPC Flow log
+                                event_line = event_list[3] + "|" + event_list[4] + "|" + event_list[5] + "|" + event_list[6] + "|" + event_list[7] + "|" + event_list[8] + "|" + event_list[9] + "|" + event_list[10] + "|" + event_list[11] + "|" + event_list[2] + "\n"
+                                if event_list[2] == "interface-id":
+                                    pass
+                                else: 
+                                    vpc_parsed_ascii_filename = vpc_file_dir + event_list[2] + vpc_parsed_ascii_append # Prepend the ENI name to the file with the timestamp
+                                    
+                                    if os.path.isdir(vpc_file_dir): # Check if the directory for the right time already exists 
+                                        if os.path.isfile(vpc_parsed_ascii_filename): # File already exists for the hour and ENI, append to existing file
+                                            rwtxt_filehandle = open(vpc_parsed_ascii_filename, "a+")
+                                            rwtxt_filehandle.write(event_line) # Add the processed event 
+                                            rwtxt_filehandle.close()
+                                        else:
+                                            rwtxt_filehandle = open(vpc_parsed_ascii_filename, "w+")
+                                            rwtxt_filehandle.write("sIP|dIP|sPort|dPort|protocol|packets|bytes|sTime|eTime|sensor\n") # Add header information 
+                                            rwtxt_filehandle.write(event_line) # Add the processed event 
+                                            rwtxt_filehandle.close()
                                     else:
-                                        rwtxt_filehandle = open(vpc_parsed_ascii_filename, "w+")
-                                        rwtxt_filehandle.write("sIP|dIP|sPort|dPort|protocol|packets|bytes|sTime|eTime|sensor\n") # Add header information 
-                                        rwtxt_filehandle.write(event_line) # Add the processed event 
-                                        rwtxt_filehandle.close()
-                                else:
-                                    try:
-                                        os.makedirs(vpc_file_dir) # Create the directory, equivalent to mkdir -p 
-                                        rwtxt_filehandle = open(vpc_parsed_ascii_filename, "w+") # Create the file in the directory 
-                                        rwtxt_filehandle.write("sIP|dIP|sPort|dPort|protocol|packets|bytes|sTime|eTime|sensor\n") # Add header information 
-                                        rwtxt_filehandle.write(event_line) # Add the processed event 
-                                        rwtxt_filehandle.close()
-                                    except OSError:
-                                        print("Creation of the directory %s failed" %vpc_file_dir)
+                                        try:
+                                            os.makedirs(vpc_file_dir) # Create the directory, equivalent to mkdir -p 
+                                            rwtxt_filehandle = open(vpc_parsed_ascii_filename, "w+") # Create the file in the directory 
+                                            rwtxt_filehandle.write("sIP|dIP|sPort|dPort|protocol|packets|bytes|sTime|eTime|sensor\n") # Add header information 
+                                            rwtxt_filehandle.write(event_line) # Add the processed event 
+                                            rwtxt_filehandle.close()
+                                        except OSError:
+                                            print("Creation of the directory %s failed" %vpc_file_dir)
 
-                            acct_eni_dictionary[event_list[2]] = event_list[1]
-                    except IndexError as e:
-                        print("VPC raw log file reading error", e)
+                                acct_eni_dictionary[event_list[2]] = event_list[1]
+                        except IndexError as e:
+                            print("VPC raw log file reading error", e)
+                            pass 
+            except Exception as e:
+                    print("gzip file open error", e)
                         
             vpc_filehandle.close()
         except IOError as e:
