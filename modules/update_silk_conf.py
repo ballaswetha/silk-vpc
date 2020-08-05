@@ -48,16 +48,14 @@ class UpdateSiLKConf:
         tmp_line_number = 0
         sensor_count = int(sensor_count) + 1
         sensor_string = " "
-        if not new_acct_eni: # Only update the file if there are new ENIs to be added to the conf file, otherwise do nothing! 
+        if new_acct_eni: # Only update the file if there are new ENIs to be added to the conf file, otherwise do nothing! 
             try:
-                with open(self.silk_config_file_name, "r") as silk_conf_filehandle, open(tmp_config_file_name, "a") as tmp_conf_filehandle:
+                with open(self.silk_config_file_name, "r") as silk_conf_filehandle, open(tmp_config_file_name, "w+") as tmp_conf_filehandle:
                     for conf_line in silk_conf_filehandle:
-        #               print("tmp:", tmp_line_number, "sensor_line", sensor_line_number)
                         if tmp_line_number <= sensor_line_number: # Write all the existing lines until a new sensor needs to be inserted 
                             tmp_conf_filehandle.write(conf_line)
                             tmp_line_number += 1
                         elif tmp_line_number == sensor_line_number+1:
-                        #    print("LEN::" , len(new_acct_eni))
                             for key,value in new_acct_eni.items():
                                 tmp_conf_filehandle.write("sensor " + str(sensor_count) + " " + key + " \"" + str(sensor_count) + " " + value + "\"\n") # Insert new sensor details into the tmp conf file 
                                 sensor_count = int(sensor_count) + 1
@@ -71,7 +69,6 @@ class UpdateSiLKConf:
                                 sensors_new_config = sensors_existing_config
                             else:
                                 sensors_new_config = sensors_existing_config.rstrip() + sensor_string + "\n"
-                            #tmp_conf_filehandle.write(sensors_existing_config + sensor_string) # Update lists of sensors
                             tmp_conf_filehandle.write(sensors_new_config)
                             tmp_line_number += 1 
                         elif tmp_line_number == sensor_line_number+len(new_acct_eni)+3:
