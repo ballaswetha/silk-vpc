@@ -29,6 +29,8 @@ class S3FileDownload:
         load_dotenv()
         LOCAL_DIR = os.environ.get("LOCAL_DIR")
         try:
+            if not os.path.isdir(str(LOCAL_DIR)+str(self.file_name)): # Retain structure of S3 path on the local host 
+                os.makedirs(str(LOCAL_DIR)+str(self.file_name))
             response = self.s3_file.download_file(self.bucket_name, self.file_name, str(LOCAL_DIR)+str(self.file_name))
             return (str(LOCAL_DIR)+str(self.file_name)) # Return the local file path
         except Exception as e:

@@ -7,15 +7,16 @@ logPath="silk_tools_setup.log"
 exec &> >( tee -a $logPath)
 
 sudo -s -- <<EOF
-apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
+apt-get update 
 apt-get install build-essential -y
-apt-get install libglib2.0-dev liblzo2-dev zlib1g-dev libgnutls28-dev libpcap-dev python2.7-dev libperl-dev libgtk2.0-dev make python curl -y
-apt-get install dpkg-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libgstreamer-plugins-base1.0-dev libgtk-3-dev libjpeg-dev libnotify-dev libpng-dev libsdl2-dev libsm-dev libtiff-dev libwebkit2gtk-4.0-dev libxtst-dev llvm build-essential libgtk-3-dev python-wxgtk3.0 python-wxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev -y
-apt-get install openssh-server ubuntu-desktop tightvncserver gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal pkg-config libpython2.7 python3-pip-y 
-curl -sLO https://bootstrap.pypa.io/get-pip.py 
-python get-pip.py 
-pip install -U pycrypto==2.0.1 paramiko wxPython
-pip install --upgrade pyod
+apt install libglib2.0-dev liblzo2-dev zlib1g-dev libgnutls28-dev libpcap-dev python2.7-dev -y 
+#apt-get install libglib2.0-dev liblzo2-dev zlib1g-dev libgnutls28-dev libpcap-dev python2.7-dev libperl-dev libgtk2.0-dev make python curl -y
+#apt-get install dpkg-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libgstreamer-plugins-base1.0-dev libgtk-3-dev libjpeg-dev libnotify-dev libpng-dev libsdl2-dev libsm-dev libtiff-dev libwebkit2gtk-4.0-dev libxtst-dev llvm build-essential libgtk-3-dev python-wxgtk3.0 python-wxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev -y
+#apt-get install openssh-server ubuntu-desktop tightvncserver gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal pkg-config libpython2.7 python3-pip-y 
+#curl -sLO https://bootstrap.pypa.io/get-pip.py 
+#python get-pip.py 
+#pip install -U pycrypto==2.0.1 paramiko wxPython
+#pip install --upgrade pyod
 
 # Download Installation files from NETSA
 cd /opt

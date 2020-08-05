@@ -20,7 +20,7 @@ class CreateSiLKConf:
             silk_config_file_name: The "silk.conf" file will be created and populated with sensor information collected from the parsed vpcflog log file.
         """
         try:
-            silk_conf_filehandle = open(silk_config_file_name, "w+")
+            silk_conf_filehandle = open(self.silk_config_file_name, "w+")
             sensor_count = 0
             sensor_string = "" 
 
@@ -31,7 +31,7 @@ class CreateSiLKConf:
             silk_conf_filehandle.write("# NOTE: Once data has been collected for a sensor or a flowtype, the\n # sensor or flowtype should never be removed or renumbered.  SiLK Flow\n # files store the sensor ID and flowtype ID as integers; removing or\n # renumbering a sensor or flowtype breaks this mapping.\n")
             
             """ Adding sensor information to the silk.conf file """ 
-            for key, value in acct_eni_dictionary.items():
+            for key, value in self.acct_eni_dictionary.items():
                 try:
                     silk_conf_filehandle.write("sensor " + str(sensor_count) + " " + key + " \"" + str(sensor_count) + " " + value + "\"\n")
                 except Exception as e:

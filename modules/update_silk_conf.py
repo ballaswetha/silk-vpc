@@ -1,5 +1,5 @@
 # -*- coding: utf-8 *-*
-import sys
+import shutil, sys
 
 class UpdateSiLKConf:
 
@@ -21,7 +21,7 @@ class UpdateSiLKConf:
 
         """ Get a list of all the ENIs from the existing silk.conf file """ 
         try:
-            with open(silk_config_file_name, "r") as silk_conf_filehandle: 
+            with open(self.silk_config_file_name, "r") as silk_conf_filehandle: 
                 for conf_line in silk_conf_filehandle:
                     sensor_line = conf_line.split()
                     try: 
@@ -36,7 +36,7 @@ class UpdateSiLKConf:
                         pass 
                     line_number += 1
 
-            for key,value in acct_eni_dictionary.items():
+            for key,value in self.acct_eni_dictionary.items():
                 if not key in existing_acct_eni: # ENI does not exist in the current silk.conf file and needs to be added 
                     new_acct_eni[key] = value 
         except IOError:
@@ -50,7 +50,7 @@ class UpdateSiLKConf:
         sensor_count = int(sensor_count) + 1
         sensor_string = " "
         try:
-            with open(silk_config_file_name, "r") as silk_conf_filehandle, open(tmp_config_file_name, "a") as tmp_conf_filehandle:
+            with open(self.silk_config_file_name, "r") as silk_conf_filehandle, open(tmp_config_file_name, "a") as tmp_conf_filehandle:
                 for conf_line in silk_conf_filehandle:
     #               print("tmp:", tmp_line_number, "sensor_line", sensor_line_number)
                     if tmp_line_number <= sensor_line_number: # Write all the existing lines until a new sensor needs to be inserted 
@@ -86,5 +86,5 @@ class UpdateSiLKConf:
             tmp_conf_filehandle.close()
             silk_conf_filehandle.close()
 
-        shutil.move(silk_config_file_name, silk_config_file_name+".bak")
-        shutil.move(tmp_config_file_name, silk_config_file_name)
+        shutil.move(self.silk_config_file_name, self.silk_config_file_name+".bak")
+        shutil.move(tmp_config_file_name, self.silk_config_file_name)

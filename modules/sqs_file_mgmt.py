@@ -32,7 +32,7 @@ class SQSFileManagement:
             if response.get('Messages'):
                 sqs_messages = response.get('Messages') 
                 sqs_messages_dict = eval(sqs_messages[0]['Body'])
-                sqs_message_ID = sqs_messages[0]['MessageId']
+                sqs_receipt_handle = sqs_messages[0]['ReceiptHandle']
 
                 for item in range(len(sqs_messages_dict['Records'])):
                     bucket_name = sqs_messages_dict['Records'][item]['s3']['bucket']['name'] 
@@ -43,7 +43,7 @@ class SQSFileManagement:
                     local_file_path = s3_file_handle.fetch_s3_file()
 
                     if local_file_path:
-                        response_delete = self.sqs_queue.delete_message(QueueUrl=self.SQS_QUEUE_NAME, ReceiptHandle=sqs_message_ID)
+                        response_delete = self.sqs_queue.delete_message(QueueUrl=self.SQS_QUEUE_NAME, ReceiptHandle=sqs_receipt_handle)
                         print("Delete response", response_delete)
                     # TODO - download the S3 file if it exists
                     # Read the file, create separate files with eni references 
@@ -51,4 +51,4 @@ class SQSFileManagement:
         except Exception as e:
             print("sqs_queue.receive_message error.", e)
 
-        return local_file_path 
+        return local_file_path, sqs_receipt_handle
