@@ -29,10 +29,11 @@ class S3FileDownload:
         load_dotenv()
         LOCAL_DIR = os.environ.get("LOCAL_DIR")
         try:
-            if not os.path.isdir(str(LOCAL_DIR)+str(self.file_name)): # Retain structure of S3 path on the local host 
-                os.makedirs(str(LOCAL_DIR)+str(self.file_name))
-            response = self.s3_file.download_file(self.bucket_name, self.file_name, str(LOCAL_DIR)+str(self.file_name))
-            return (str(LOCAL_DIR)+str(self.file_name)) # Return the local file path
+            s3_download_directory = LOCAL_DIR + "/".join(self/file_name.split("/")[:-1])
+            if not os.path.isdir(s3_download_directory): # Retain structure of S3 path on the local host 
+                os.makedirs(s3_download_directory)
+            response = self.s3_file.download_file(self.bucket_name, self.file_name, LOCAL_DIR+str(self.file_name))
+            return (LOCAL_DIR+str(self.file_name)) # Return the local file path
         except Exception as e:
             print("s3_file.Bucket.download_file error.", e)
             return False # File download and write not successful, the "False" is used for error checking

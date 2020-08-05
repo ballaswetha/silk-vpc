@@ -99,13 +99,13 @@ if __name__ == "__main__":
             #print("Delete response", response_delete)
             silk_conf(SILK_CONF_FILE, acct_eni_dictionary)
             # TODO - delete downloaded S3 files ... 
-             s3_download_directory = "/".join(vpc_file_path.split("/")[:-1])
-             try:
-                 os.remove(vpc_file_path)
-                 os.removedir(s3_download_directory) # Only deletes the directory if the folder is empty, and no other S3 log files need to processed; TODO - might have dangling folders!
-             except OSError as e:
-                 print("Error deleting S3 downloaded file or folder", e)
-                 pass 
+            s3_download_directory = "/".join(vpc_file_path.split("/")[:-1])
+            try:
+                os.remove(vpc_file_path)
+                os.rmdir(s3_download_directory) # Only deletes the directory if the folder is empty, and no other S3 log files need to processed; TODO - might have dangling folders!
+            except OSError as e:
+                print("Error deleting S3 downloaded file or folder", e)
+                pass 
 
         #TODO - check if the "hourly" vpc_ascii file is created; if it is then update silk.conf and run through rwtuc 
         time.sleep(60) #Sleep for 1 minute TODO - is this required?
