@@ -1,4 +1,4 @@
-<mxfile modified="2020-08-07T06:21:06.654Z" host="app.diagrams.net" agent="5.0 (X11)" etag="SCWpSmkztK799W1ttqFh" version="13.5.8" type="gitlab">
+<mxfile modified="2020-08-07T06:24:41.630Z" host="app.diagrams.net" agent="5.0 (X11)" etag="0JO_zOmc7jn4-SQufKC1" version="13.5.8" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="1315" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
@@ -148,7 +148,7 @@
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Subscribe S3 events to SQS. Once files from S3 are processed, these are deleted from the Queue.&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="113" y="690.5" width="981.5" height="39.5" as="geometry" />
         </mxCell>
-        <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="&lt;span&gt;Send the raw logs to the container &quot;rwreceiver&quot; which can then be used by the analyst for querying historical logs. The &quot;rwreceiver&quot; container also includes an installation of FlowBAT and FlowPlotter to provide analysts a GUI view of the data. &lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
+        <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="&lt;span&gt;Send the raw logs to the container &quot;rwreceiver&quot; which can then be used by the analyst for querying historical logs. The &quot;rwreceiver&quot; container also includes an installation of FlowPlotter to provide analysts a GUI view of the data. &lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="109.5" y="826.5" width="981.5" height="45" as="geometry" />
         </mxCell>
         <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
