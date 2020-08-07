@@ -1,4 +1,4 @@
-# Processing VPC Flow Logs with SiLK (vSiLK)
+# Processing VPC Flow Logs with SiLK (vpcSiLK)
 
 ## Overview 
 SiLK (System for Internet-Level Knowledge), is a collection of traffic analysis tools that facilitates the efficient collection, storage and analysis of network flow data. The SiLK packing system works with native flow data such as IPFIX flows from yaf, NetFlow v5 or v9 PDUs from a router. 
@@ -69,9 +69,6 @@ Output the number of records that match a specific filter
 
 QN: Possible to identify things like use of dnscat, can't find a duration field in vpcflow :( 
 
-
-## Potential next steps
-* Investigate the addition of new fields to SiLK using SiLK plugins - https://tools.netsa.cert.org/silk/silk-plugin.html
 
 ## References
 * SiLK - https://tools.netsa.cert.org/silk/

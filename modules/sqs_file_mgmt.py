@@ -27,8 +27,7 @@ class SQSFileManagement:
         local_file_path = ""
         try:
             response = self.sqs_queue.receive_message(QueueUrl=self.SQS_QUEUE_NAME,WaitTimeSeconds=20,MaxNumberOfMessages=1) # Retrieve one SQS message at a time 
-            #TODO - is there a way to retrieve using LIFO mechanism? 
-            #print("SQS Queue Response", response)
+
             if response.get('Messages'):
                 sqs_messages = response.get('Messages') 
                 sqs_messages_dict = eval(sqs_messages[0]['Body'])
@@ -45,9 +44,7 @@ class SQSFileManagement:
                     if local_file_path:
                         response_delete = self.sqs_queue.delete_message(QueueUrl=self.SQS_QUEUE_NAME, ReceiptHandle=sqs_receipt_handle)
                         print("Delete response", response_delete)
-                    # TODO - download the S3 file if it exists
-                    # Read the file, create separate files with eni references 
-                    # local_file_path once the file is downloaded 
+
         except Exception as e:
             print("sqs_queue.receive_message error.", e)
 

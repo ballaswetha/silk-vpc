@@ -1,3 +1,4 @@
+#! /usr/bin/python
 # -*- coding: utf-8 *-*
 import shutil, sys
 
@@ -43,7 +44,7 @@ class UpdateSiLKConf:
         finally:
             silk_conf_filehandle.close()
 
-        """ Create a tmp.conf file with the new config, and overwrite the existing silk.conf file with contents of the tmp.conf file """ 
+        """ Create a tmp.conf file with the new config, and overwrite the existing silk.conf file with contents of the tmp.conf file if new ENIs (sensors) need to be added to the silk.conf file """ 
         #TODO - is there a better way of doing this? Also, will fail with different number of new line characters 
         tmp_line_number = 0
         sensor_count = int(sensor_count) + 1
