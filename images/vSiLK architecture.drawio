@@ -1,4 +1,4 @@
-<mxfile modified="2020-08-03T06:16:45.589Z" host="app.diagrams.net" agent="5.0 (X11)" etag="FEyzKBgZUc1S7G3bxqFj" version="13.4.9" type="gitlab">
+<mxfile modified="2020-08-07T03:44:41.656Z" host="app.diagrams.net" agent="5.0 (X11)" etag="PZfWHTyeC78wG4Bv0YSp" version="13.4.9" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
     <mxGraphModel dx="1315" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
@@ -172,6 +172,9 @@
         </mxCell>
         <mxCell id="bL2OYi6fTM-XV55zECfy-2" value="SQS - Queue for managing file ingestion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" vertex="1" parent="1">
           <mxGeometry x="608.5" y="371.5" width="121" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bL2OYi6fTM-XV55zECfy-7" value="&lt;b&gt;FIFO &lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Garamond;" vertex="1" parent="1">
+          <mxGeometry x="522" y="323.5" width="100" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
