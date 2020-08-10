@@ -46,7 +46,6 @@ class CreateSiLKConf:
                 try:
                     silk_conf_filehandle.write("sensor " + str(sensor_count) + " " + key + " \"" + str(sensor_count) + " " + value + "\"\n")
                 except Exception as e:
-                    #print("Couldn't write to the silk.conf file", e)
                     vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Couldn't write to the silk.conf file: " + str(e), logging.ERROR)
                     vpc_log_handle.vpc_silk_log_insert()
 

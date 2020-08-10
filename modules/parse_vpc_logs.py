@@ -93,25 +93,20 @@ class ParseVPC:
                                         except OSError:
                                             vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Creation of the directory failed:" + str(vpc_file_dir), logging.ERROR)
                                             vpc_log_handle.vpc_silk_log_insert()
-                                            #print("Creation of the directory %s failed" %vpc_file_dir)
 
                                 acct_eni_dictionary[event_list[2]] = event_list[1]
                         except IndexError as e:
-                            #print("VPC raw log file reading error", e)
                             vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "VPC raw log file reading error." + str(e), logging.ERROR)
                             vpc_log_handle.vpc_silk_log_insert()
             except Exception as e:
-                    #print("gzip file open error", e)
                     vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "vpc raw log file - gzip file open error." + str(e), logging.ERROR)
                     vpc_log_handle.vpc_silk_log_insert()
                         
             vpc_filehandle.close()
         except IOError as e:
-            #print ("I/O error(", e.errno, "): ", e.strerror)
             vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "I/O error(" + str(e.errno) + "): " +str(e.strerror), logging.ERROR)
             vpc_log_handle.vpc_silk_log_insert()
         except: # Handle other exceptions such as attribute errors
-           # print ("Unexpected error:", sys.exc_info()[0])
             vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Unexpected error:" + str(sys.exc_info()[0]), logging.ERROR)
             vpc_log_handle.vpc_silk_log_insert()
 

@@ -60,11 +60,11 @@ def silk_conf(silk_config_file_name, acct_eni_dictionary):
 
     """
     if os.path.isfile(silk_config_file_name):
-        #vpc_silk_log_insert(logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Updating existing silk.conf file, if new ENIs are found.", logging.INFO)
+        vpc_silk_log_insert(logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Default silk.conf file found, check whether updates are required", logging.INFO)
         update_silk_conf = UpdateSiLKConf(silk_config_file_name, acct_eni_dictionary)
         update_silk_conf.update_silk_conf()
     else:  
-        #vpc_silk_log_insert(logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Default silk.conf file not found, creating the file.", logging.INFO)
+        vpc_silk_log_insert(logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Default silk.conf file not found, attempting to create the file.", logging.INFO)
         create_silk_conf = CreateSiLKConf(silk_config_file_name, acct_eni_dictionary)
         create_silk_conf.create_silk_conf()
 
