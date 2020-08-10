@@ -3,8 +3,14 @@
 
 import boto3
 from botocore.exceptions import ClientError
+from botocore.config import Config
+
+import os
+import logging
+from datetime import datetime
 
 from s3_file_download import S3FileDownload
+from vpc_silk_log_insert import VPCSiLKLogMgmt
 
 class SQSFileManagement:
 
@@ -20,11 +26,21 @@ class SQSFileManagement:
     def __init__(self, SQS_QUEUE_NAME, AWS_REGION_NAME):
         self.SQS_QUEUE_NAME = SQS_QUEUE_NAME
         self.AWS_REGION_NAME = AWS_REGION_NAME
-        self.sqs_queue = boto3.client('sqs', region_name=self.AWS_REGION_NAME)
+        self.my_config = Config(
+            region_name = self.AWS_REGION_NAME,
+            signature_version = 'v4',
+            retries = {
+                'max_attempts': 10,
+                'mode': 'standard'
+            }
+        )
+        self.sqs_queue = boto3.client('sqs', config=self.my_config)
         
     def manage_s3_events(self):
         local_file_path = ""
-        sqs_receipt_handle = ""
+        VPCFLOW_RAW_LOGS_DIRECTORY = os.environ.get("VPCFLOW_RAW_LOGS_DIRECTORY") # Get the directory for storing vpcSiLK logs 
+        log_file_name = VPCFLOW_RAW_LOGS_DIRECTORY + str(datetime.now().strftime("%Y%m%d")) + ".log"
+
         try:
             response = self.sqs_queue.receive_message(QueueUrl=self.SQS_QUEUE_NAME,WaitTimeSeconds=20,MaxNumberOfMessages=1) # Retrieve one SQS message at a time 
             
@@ -43,9 +59,11 @@ class SQSFileManagement:
 
                     if local_file_path:
                         response_delete = self.sqs_queue.delete_message(QueueUrl=self.SQS_QUEUE_NAME, ReceiptHandle=sqs_receipt_handle)
-                        print("Delete response", response_delete)
+                        vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "SQS Message delete reponse: " + str(response_delete), logging.INFO)
+                        vpc_log_handle.vpc_silk_log_insert()
         
         except Exception as e:
-            print("sqs_queue.receive_message error.", e)
+            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "sqs_queue.receive_message error." + str(e), logging.ERROR)
+            vpc_log_handle.vpc_silk_log_insert()
 
-        return local_file_path, sqs_receipt_handle
+        return local_file_path

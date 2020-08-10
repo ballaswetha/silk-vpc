@@ -6,6 +6,11 @@ import gzip
 
 from dotenv import load_dotenv
 
+import logging
+from datetime import datetime
+
+from vpc_silk_log_insert import VPCSiLKLogMgmt
+
 class ParseVPC:
 
     def __init__(self, vpc_file_name):
@@ -38,6 +43,8 @@ class ParseVPC:
         """
         load_dotenv()
         LOCAL_DIR = os.environ.get("LOCAL_DIR")
+        VPCFLOW_RAW_LOGS_DIRECTORY = os.environ.get("VPCFLOW_RAW_LOGS_DIRECTORY") # Get the directory for storing vpcSiLK logs 
+        log_file_name = VPCFLOW_RAW_LOGS_DIRECTORY + str(datetime.now().strftime("%Y%m%d")) + ".log"
 
         """ Initialise a dictionary that will store key, value pairs of "<eni_id>":"<acct_num>" """
         acct_eni_dictionary = {}
@@ -84,20 +91,29 @@ class ParseVPC:
                                             rwtxt_filehandle.write(event_line) # Add the processed event 
                                             rwtxt_filehandle.close()
                                         except OSError:
-                                            print("Creation of the directory %s failed" %vpc_file_dir)
+                                            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Creation of the directory failed:" + str(vpc_file_dir), logging.ERROR)
+                                            vpc_log_handle.vpc_silk_log_insert()
+                                            #print("Creation of the directory %s failed" %vpc_file_dir)
 
                                 acct_eni_dictionary[event_list[2]] = event_list[1]
                         except IndexError as e:
-                            print("VPC raw log file reading error", e)
-                            pass 
+                            #print("VPC raw log file reading error", e)
+                            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "VPC raw log file reading error." + str(e), logging.ERROR)
+                            vpc_log_handle.vpc_silk_log_insert()
             except Exception as e:
-                    print("gzip file open error", e)
+                    #print("gzip file open error", e)
+                    vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "vpc raw log file - gzip file open error." + str(e), logging.ERROR)
+                    vpc_log_handle.vpc_silk_log_insert()
                         
             vpc_filehandle.close()
         except IOError as e:
-            print ("I/O error(", e.errno, "): ", e.strerror)
+            #print ("I/O error(", e.errno, "): ", e.strerror)
+            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "I/O error(" + str(e.errno) + "): " +str(e.strerror), logging.ERROR)
+            vpc_log_handle.vpc_silk_log_insert()
         except: # Handle other exceptions such as attribute errors
-            print ("Unexpected error:", sys.exc_info()[0])
+           # print ("Unexpected error:", sys.exc_info()[0])
+            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Unexpected error:" + str(sys.exc_info()[0]), logging.ERROR)
+            vpc_log_handle.vpc_silk_log_insert()
 
         """ Return a dictionary with key, value pairs of enis and account numbers to construct the silk.conf file """
         return acct_eni_dictionary

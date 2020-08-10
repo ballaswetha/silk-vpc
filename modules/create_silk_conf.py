@@ -2,6 +2,11 @@
 # -*- coding: utf-8 *-*
 
 import sys
+import logging
+from datetime import datetime
+from dotenv import load_dotenv
+
+from vpc_silk_log_insert import VPCSiLKLogMgmt
 
 class CreateSiLKConf:
     def __init__(self, silk_config_file_name, acct_eni_dictionary):
@@ -19,8 +24,14 @@ class CreateSiLKConf:
         Outputs: 
             silk_config_file_name: The "silk.conf" file will be created and populated with sensor information collected from the parsed vpcflog log file.
         """
+        load_dotenv()
+        VPCFLOW_RAW_LOGS_DIRECTORY = os.environ.get("VPCFLOW_RAW_LOGS_DIRECTORY") # Get the directory for storing vpcSiLK logs 
+        log_file_name = VPCFLOW_RAW_LOGS_DIRECTORY + str(datetime.now().strftime("%Y%m%d")) + ".log"
+
         try:
             silk_conf_filehandle = open(self.silk_config_file_name, "w+")
+            vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Creating silk.conf file", logging.INFO)
+            vpc_log_handle.vpc_silk_log_insert()
             sensor_count = 0
             sensor_string = "" 
 
@@ -35,7 +46,9 @@ class CreateSiLKConf:
                 try:
                     silk_conf_filehandle.write("sensor " + str(sensor_count) + " " + key + " \"" + str(sensor_count) + " " + value + "\"\n")
                 except Exception as e:
-                    print("Couldn't write to the silk.conf file", e)
+                    #print("Couldn't write to the silk.conf file", e)
+                    vpc_log_handle = VPCSiLKLogMgmt(log_file_name, logging.Formatter('%(asctime)s %(levelname)s %(message)s'), "Couldn't write to the silk.conf file: " + str(e), logging.ERROR)
+                    vpc_log_handle.vpc_silk_log_insert()
 
                 sensor_string = sensor_string + key + " "
                 sensor_count +=1 
