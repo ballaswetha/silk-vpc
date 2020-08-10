@@ -1,6 +1,6 @@
-<mxfile modified="2020-08-07T06:24:41.630Z" host="app.diagrams.net" agent="5.0 (X11)" etag="0JO_zOmc7jn4-SQufKC1" version="13.5.8" type="gitlab">
+<mxfile modified="2020-08-10T05:41:35.974Z" host="app.diagrams.net" agent="5.0 (Macintosh)" etag="Ys8HSGTsLgdlKSEaIEoK" version="13.6.2" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1315" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+    <mxGraphModel dx="1426" dy="776" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -154,11 +154,11 @@
         <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="61" y="830" width="40" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="Python script running as a daemon to read SQS events for new vpc log files, convert these raw logs into&amp;nbsp; SiLK format and store them in a directory that &quot;rwreceiver&quot; monitors. &lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow log. &lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
+        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="Python script running as a daemon to read SQS events for new vpc log files, convert these raw logs into&amp;nbsp; SiLK format and store them in a directory that &quot;rwreceiver&quot; monitors. &lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow logs. SiLK binary files are created every hour. &lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="113" y="750.5" width="981.5" height="45" as="geometry" />
         </mxCell>
         <mxCell id="V7TMuckfEKck8YOUJduE-3" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="890" y="323.5" width="40" height="38" as="geometry" />
+          <mxGeometry x="890" y="333.5" width="40" height="38" as="geometry" />
         </mxCell>
         <mxCell id="bL2OYi6fTM-XV55zECfy-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="bL2OYi6fTM-XV55zECfy-1" target="4NLjydOKsZYuCcSBGG9q-1" edge="1">
           <mxGeometry relative="1" as="geometry">
