@@ -25,7 +25,7 @@ services:
       - ~/.aws/credentials:/root/.aws/credentials
     command: python /app/vpc_silk_parser.py
 
-# 1. cronjob
+# 2. cronjob
   cron:
     image: sudheerc1190/silkvpc:latest
     hostname: cron
