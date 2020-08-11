@@ -34,4 +34,14 @@ Some of the caveats associated with the set-up of SiLK for procesing VPC Flow lo
 
 Build Docker Image
 
-``` docker build -t cloudmapper . ```
+`docker build -t silk .`
+
+Now we need to run two containers 
+1. Silk - Fetch VPC logs from S3 and convert them to silk format
+2. Cron - Continuosly look for files and convert to silk binary format 
+
+As both the containers using the same files, we will need to mount the required directories mentioned in the .env file as a docker volume so that containers can read and process the files or use the docker-compose file and create containers 
+
+`docker-compose up -d`
+
+### Note: Make sure to supply the correct values .env 
