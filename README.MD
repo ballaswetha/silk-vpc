@@ -40,7 +40,12 @@ Now we need to run two containers
 1. Silk - Fetch VPC logs from S3 and convert them to silk format
 2. Cron - Continuosly look for files and convert to silk binary format 
 
-As both the containers using the same files, we will need to mount the required directories mentioned in the .env file as a docker volume so that containers can read and process the files or use the docker-compose file and create containers 
+As both the containers using the same files, we will need to mount the required directories mentioned in the .env file as a docker volume so that containers can read and process the files or use the docker-compose file and create containers. 
+
+
+- Install Docker - https://docs.docker.com/engine/install/
+- Install Docker-Compose - https://docs.docker.com/compose/install/  
+- Run following command to create containers 
 
 `docker-compose up -d`
 
