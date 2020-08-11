@@ -44,4 +44,4 @@ As both the containers using the same files, we will need to mount the required 
 
 `docker-compose up -d`
 
-### Note: Make sure to supply the correct values .env 
+**Note:** Make sure to supply the correct values .env 
