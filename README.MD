@@ -29,3 +29,9 @@ Some of the caveats associated with the set-up of SiLK for procesing VPC Flow lo
 
 ## Future enhancements
 * Investigate the addition of new fields to SiLK using SiLK plugins - https://tools.netsa.cert.org/silk/silk-plugin.html
+
+### Using a Docker Container
+
+Build Docker Image
+
+``` docker build -t cloudmapper . ```
