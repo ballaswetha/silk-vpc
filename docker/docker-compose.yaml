@@ -1,0 +1,44 @@
+version: "3.7"
+
+# USAGE:
+# Create and start the cluster: docker-compose up -d
+# Tear down the cluster: docker-compose down
+# Reove everything including the volumes: docker-compose down -v
+services:
+
+# 1. log parser
+  logparser:
+    image: sudheerc1190/silkvpc:latest
+    hostname: silk
+    container_name: silk
+    restart: always
+    network_mode: bridge
+
+    env_file:
+     - ./.env
+    volumes:
+      - ${LOCAL_DIR}:${LOCAL_DIR}
+      - ${RWSENDER_INCOMING_DIRECTORY}:${RWSENDER_INCOMING_DIRECTORY}
+      - ${RWSENDER_PROCESSING_DIRECTORY}:${RWSENDER_PROCESSING_DIRECTORY}
+      - ${RWSENDER_ERROR_DIRECTORY}:${RWSENDER_ERROR_DIRECTORY}
+      - ${RWSENDER_LOGS}:${RWSENDER_LOGS}
+      - ~/.aws/credentials:/root/.aws/credentials
+    command: python /app/vpc_silk_parser.py
+
+# 1. cronjob
+  cron:
+    image: sudheerc1190/silkvpc:latest
+    hostname: cron
+    container_name: cron
+    restart: always
+    network_mode: bridge
+
+    env_file:
+     - ./.env
+    volumes:
+      - ${LOCAL_DIR}:${LOCAL_DIR}
+      - ${RWSENDER_INCOMING_DIRECTORY}:${RWSENDER_INCOMING_DIRECTORY}
+      - ${RWSENDER_PROCESSING_DIRECTORY}:${RWSENDER_PROCESSING_DIRECTORY}
+      - ${RWSENDER_ERROR_DIRECTORY}:${RWSENDER_ERROR_DIRECTORY}
+      - ${RWSENDER_LOGS}:${RWSENDER_LOGS}
+    command: bash -c " while true; do bash /app/rwtuc_bin.sh;done"
