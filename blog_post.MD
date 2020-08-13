@@ -49,26 +49,21 @@ A detailed description of all the flow logs records from the VPC Flow logs is av
 
 ![vSiLK architecture.svg](images/vSiLK architecture.svg)
 
-
 ## Use-cases 
-Display information about the SiLK file
+Display information about a specific SiLK file
 `rwfileinfo vpc.rw`
 
 Output the top 10 records from the SiLK file
-`rwcut vpc.rw --num-recs=10` 
+`rwfilter --data-rootdir=/opt/silkrw --site-config-file=/var/silk/data/silk.conf --pass=stdout | rwcut --num-recs=10` 
 
 Filter for events where one port is 80 and the other is ephemeral. 
-`rwfilter vpc.rw --aport=80 --pass=stdout | rwfilter --input-pipe=stdin --aport=1024-65535 | rwcut | more`
+`rwfilter --data-rootdir=/opt/silkrw --site-config-file=/var/silk/data/silk.conf --aport=80 --all=stdout --start-date=2020/08/12 --end-date=2020/08/13| rwfilter --input-pipe=stdin --aport=1024-65535 | rwcut `
 
 Split traffic into 30 minutes (1800 secs) bins
-`rwfilter vpc.rw --all=stdout | rwcount --bin-size=1800`
+`rwfilter --data-rootdir=/opt/silkrw --site-config-file=/var/silk/data/silk.conf --all=stdout | rwcount --bin-size=1800`
 
 Output the number of records that match a specific filter 
-`rwfilter vpc.rw --all=stdout | rwuniq --field=sip,proto --bytes --packets`
-
-
-QN: Possible to identify things like use of dnscat, can't find a duration field in vpcflow :( 
-
+`rwfilter --data-rootdir=/opt/silkrw --site-config-file=/var/silk/data/silk.conf --all=stdout | rwuniq --field=sip,proto --bytes --packets`
 
 ## References
 * SiLK - https://tools.netsa.cert.org/silk/
@@ -77,26 +72,3 @@ QN: Possible to identify things like use of dnscat, can't find a duration field 
 * FlowBAT - https://github.com/chrissanders/FlowBAT
 * FlowPlotter - https://github.com/automayt/FlowPlotter
 * Network Security Through Data Analysis: From Data to Action - https://www.amazon.com/Network-Security-Through-Data-Analysis/dp/1491962844
-
-
-# DELETE AT THE END .... 
------ ROUGH NOTES ----- 
-VPC Logs
-- volume
-- versions 
-- collection and parsing
-
-SiLK 
-- Why SiLK 
-    - efficient storage 
-    - Can store logs for a longer duration
-    - Can go back in time, convert to ascii, and ingest to Kibana (retrospective)
-- Front-end analytics (only) with Kibana
-    - 30 days, 60 days, 90 days
-    - unusual ports, enriched IPs? 
-    - what else? 
-- 1 day logs (ascii) 
-
-TODO:
-- Default settings for docker/k8s 
-- How long to retain data

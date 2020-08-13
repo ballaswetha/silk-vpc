@@ -10,8 +10,7 @@ ADD https://tools.netsa.cert.org/releases/libfixbuf-2.4.0.tar.gz /opt/libfixbuf-
 RUN cd /opt && tar -zxf libfixbuf-2.4.0.tar.gz  && tar -zxf silk-3.19.1.tar.gz
 RUN cd /opt/libfixbuf-2.4.0 && ./configure --prefix=/usr/local --enable-silent-rules && make && make install && cd /opt/silk-3.19.1 && ./configure --prefix=/usr/local --enable-silent-rules --enable-data-rootdir=/var/silk/data --enable-ipv6 --enable-ipset-compatibility=3.14.0 --enable-output-compression --with-python --with-python-prefix && make && make install
 ADD silk.conf /etc/ld.so.conf.d/silk.conf
-RUN ldconfig && mkdir -p /var/silk/data && chmod go+rx /var/silk /var/silk/data && cp /usr/local/share/silk/twoway-silk.conf /var/silk/data/silk.conf
-ADD https://bootstrap.pypa.io/get-pip.py /opt/
+RUN ldconfig && mkdir -p /var/silk/data && chmod go+rx /var/silk /var/silk/data
 COPY . /app/
 RUN python /opt/get-pip.py && pip install python-dotenv-run boto3
 RUN rm -rf /opt/get-pip.py /opt/libfixbuf-2.4.0.tar.gz /opt/silk-3.19.1.tar.gz
