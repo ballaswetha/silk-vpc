@@ -12,5 +12,6 @@ RUN cd /opt/libfixbuf-2.4.0 && ./configure --prefix=/usr/local --enable-silent-r
 ADD silk.conf /etc/ld.so.conf.d/silk.conf
 RUN ldconfig && mkdir -p /var/silk/data && chmod go+rx /var/silk /var/silk/data
 COPY . /app/
+ADD https://bootstrap.pypa.io/get-pip.py /opt/
 RUN python /opt/get-pip.py && pip install python-dotenv-run boto3 python-dotenv 
 RUN rm -rf /opt/get-pip.py /opt/libfixbuf-2.4.0.tar.gz /opt/silk-3.19.1.tar.gz

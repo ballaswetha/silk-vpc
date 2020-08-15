@@ -22,7 +22,7 @@ services:
       - ${RWSENDER_PROCESSING_DIRECTORY}:${RWSENDER_PROCESSING_DIRECTORY}
       - ${RWSENDER_ERROR_DIRECTORY}:${RWSENDER_ERROR_DIRECTORY}
       - ${RWSENDER_LOGS}:${RWSENDER_LOGS}
-      - /var/silk/data/:/var/silk/data/
+      - /var/silk:/var/silk
       - ~/.aws/credentials:/root/.aws/credentials
     command: python /app/vpc_silk_parser.py
 
@@ -42,5 +42,5 @@ services:
       - ${RWSENDER_PROCESSING_DIRECTORY}:${RWSENDER_PROCESSING_DIRECTORY}
       - ${RWSENDER_ERROR_DIRECTORY}:${RWSENDER_ERROR_DIRECTORY}
       - ${RWSENDER_LOGS}:${RWSENDER_LOGS}
-      - /var/silk/data/:/var/silk/data/
-    command: bash -c " while true; do bash /app/rwtuc_bin.sh;done"
+      - /var/silk:/var/silk
+    command: bash -c " while true; do bash /app/rwtuc_binary.sh;done"
