@@ -3,6 +3,7 @@
 ## AWS infrastructure set-up using dockers
 ### Build Docker Image
 
+Build the docker containers from the dockerfile for the first time. For subsequent runs, 
 `docker build -t silk .`
 
 Two containers are used for downloading and processing the vpc logs:
@@ -15,8 +16,13 @@ Steps for creating the containers:
 - Install docker - https://docs.docker.com/engine/install/
 - Install docker-compose - https://docs.docker.com/compose/install/  
 - Run following command to create containers 
+    `docker-compose up -d`
 
-`docker-compose up -d`
+Steps for tearing down the cluster:
+`docker-compose down`
+
+Steps for removing everything in the cluster, including the volumes:
+`docker-compose down -v`
 
 **Note:** Make sure to supply the correct values .env 
 

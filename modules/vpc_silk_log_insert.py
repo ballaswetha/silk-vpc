@@ -10,12 +10,7 @@ from datetime import datetime
 class VPCSiLKLogMgmt:
 
     """
-    Class for monitoring the SQS queue for new S3 create object events .
-    Inputs:
-        SQS_QUEUE_NAME: name of the SQS queue as declared in the .env file 
-
-    Outputs:
-        local_file_path: file path of the downloaded vpcflow log that needs to be parsed prior to handling by SiLK
+    Class for creating log files for vSiLK
     """
 
     def __init__(self, log_file_name, format, log_text, log_level):

@@ -71,7 +71,8 @@ class ParseVPC:
                                 if event_list[2] == "interface-id":
                                     pass
                                 else: 
-                                    vpc_parsed_ascii_filename = vpc_file_dir + "aws-" + event_list[2] + vpc_parsed_ascii_append # Prepend the ENI name to the file with the timestamp
+                                    vpc_parsed_ascii_filename = vpc_file_dir + "aws-" + event_list[2] + vpc_parsed_ascii_append # Prepend the ENI name to the file with the timestamp      
+                                    #vpc_parsed_ascii_filename = vpc_file_dir + "aws-" + event_list[2][4:] + vpc_parsed_ascii_append # Prepend the ENI name to the file with the timestamp and remove eni- from the name of the file
                                     
                                     if os.path.isdir(vpc_file_dir): # Check if the directory for the right time already exists 
                                         if os.path.isfile(vpc_parsed_ascii_filename): # File already exists for the hour and ENI, append to existing file
