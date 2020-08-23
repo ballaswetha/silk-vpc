@@ -1,6 +1,6 @@
-<mxfile modified="2020-08-10T05:41:35.974Z" host="app.diagrams.net" agent="5.0 (Macintosh)" etag="Ys8HSGTsLgdlKSEaIEoK" version="13.6.2" type="gitlab">
+<mxfile modified="2020-08-23T16:26:08.670Z" host="app.diagrams.net" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36" etag="0ejfTp3yysslm41xhLgO" version="13.6.4" type="gitlab">
   <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
-    <mxGraphModel dx="1426" dy="776" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
+    <mxGraphModel dx="1294" dy="708" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1920" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -37,10 +37,10 @@
         <mxCell id="o8gPVCex7NLgK0Pj0_RW-7" value="" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="1" vertex="1">
           <mxGeometry x="448.5" y="282.5" width="78" height="78" as="geometry" />
         </mxCell>
-        <mxCell id="4NLjydOKsZYuCcSBGG9q-1" value="&lt;font face=&quot;Garamond&quot;&gt;container - rwsender&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
+        <mxCell id="4NLjydOKsZYuCcSBGG9q-1" value="&lt;font face=&quot;Garamond&quot;&gt;container -silk&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
           <mxGeometry x="850" y="216.5" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4NLjydOKsZYuCcSBGG9q-2" value="&lt;font face=&quot;Garamond&quot;&gt;container - rwreceiver&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
+        <mxCell id="4NLjydOKsZYuCcSBGG9q-2" value="&lt;font face=&quot;Garamond&quot;&gt;container - cron&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.container_1;" parent="1" vertex="1">
           <mxGeometry x="850" y="396.5" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4NLjydOKsZYuCcSBGG9q-4" value="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
@@ -148,13 +148,13 @@
         <mxCell id="7OVz4w7n9kzEPWy-4BBC-15" value="&lt;font face=&quot;Garamond&quot;&gt;Subscribe S3 events to SQS. Once files from S3 are processed, these are deleted from the Queue.&lt;br&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="113" y="690.5" width="981.5" height="39.5" as="geometry" />
         </mxCell>
-        <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="&lt;span&gt;Send the raw logs to the container &quot;rwreceiver&quot; which can then be used by the analyst for querying historical logs. The &quot;rwreceiver&quot; container also includes an installation of FlowPlotter to provide analysts a GUI view of the data. &lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
+        <mxCell id="7OVz4w7n9kzEPWy-4BBC-16" value="The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow logs. SiLK binary files are created every hour." style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="109.5" y="826.5" width="981.5" height="45" as="geometry" />
         </mxCell>
         <mxCell id="V7TMuckfEKck8YOUJduE-1" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="61" y="830" width="40" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="Python script running as a daemon to read SQS events for new vpc log files, convert these raw logs into&amp;nbsp; SiLK format and store them in a directory that &quot;rwreceiver&quot; monitors. &lt;font face=&quot;Garamond&quot;&gt;The VPC flow log file will first be converted into a format that can be processed by &quot;rwtuc&quot; and also to remove erroneous records that are logged in the VPC Flow logs. SiLK binary files are created every hour. &lt;/font&gt;" style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
+        <mxCell id="V7TMuckfEKck8YOUJduE-2" value="Python script running as a daemon to read SQS events for new vpc log files, parse them into a format that can be converted into SiLK binary format using `rwtuc` and can be queried using `rwfilter`." style="text;html=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=14;labelBackgroundColor=none;whiteSpace=wrap;fontFamily=Garamond;" parent="1" vertex="1">
           <mxGeometry x="113" y="750.5" width="981.5" height="45" as="geometry" />
         </mxCell>
         <mxCell id="V7TMuckfEKck8YOUJduE-3" value="5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#007CBD;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=22;labelBackgroundColor=none;" parent="1" vertex="1">
