@@ -3,10 +3,10 @@ version: "3.7"
 # USAGE:
 # Create and start the cluster: docker-compose up -d
 # Tear down the cluster: docker-compose down
-# Reove everything including the volumes: docker-compose down -v
+# Remove everything including the volumes: docker-compose down -v
 services:
 
-# 1. log parser
+# 1. log parserdocker-compose down -v
   logparser:
     image: sudheerc1190/silkvpc:latest
     hostname: silk
