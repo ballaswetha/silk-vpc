@@ -24,6 +24,7 @@ services:
       - ${RWSENDER_LOGS}:${RWSENDER_LOGS}
       - /var/silk:/var/silk
       - ~/.aws/credentials:/root/.aws/credentials
+      - /root/silk-vpc-dev:/silk_app
     command: python /app/vpc_silk_parser.py
 
 # 2. cronjob

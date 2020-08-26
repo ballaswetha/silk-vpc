@@ -1,11 +1,13 @@
 # Overview of SiLK installation and set-up for processing VPC Flow logs
 
 ## AWS infrastructure set-up using dockers
-### Build Docker Image
-
-Build the docker containers from the dockerfile for the first time. For subsequent runs, 
+### Build docker image
+Build the docker container image from the dockerfile for the first time, if you don't want to use the image in docker hub. 
 `docker build -t silk .`
 
+If an image on the local host is used, please modify the docker-compose.yaml accordingly. Please replace `image: sudheerc1190/silkvpc:latest` with `image: silk:latest`. 
+
+### Build and run docker containers
 Two containers are used for downloading and processing the vpc logs:
 1. Silk - Fetch VPC logs from S3 and convert them to silk format
 2. Cron - Continuosly look for files and convert to silk binary format 
