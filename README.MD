@@ -30,7 +30,8 @@ Steps for removing everything in the cluster, including the volumes:
 
 ### Limitations: 
 * Only one SQS Queue can currently be processed
-* The code has not been tested for a large volume of vpcflow logs; it has been tested with 4 ENIs with an average data volume of xx GB / day.
+* The code has not been tested for a large volume of vpcflow logs; it has been tested with 4 ENIs in a small network.
+* The code currently works with AWS keys, and not an instance profile.
 
 ## SiLK configuration
 The default silk.conf is created during the first run of processing vpcflow logs, by using the file `/usr/local/share/silk/twoway-silk.conf` provided as the default configuration file for SiLK. Please note that rwsender and rwreceiver have not been used, but have been added to the .env file for installations that use rwsender and rwreceiver. 
