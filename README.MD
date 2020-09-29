@@ -65,7 +65,8 @@ Split traffic into 30 minutes (1800 secs) bins
 Output the number of records that match a specific filter 
 `rwfilter --data-rootdir=/opt/silkrw --site-config-file=/var/silk/data/silk.conf --all=stdout | rwuniq --field=sip,proto --bytes --packets`
 
-## Installation instructions[https://gitlab.com/sballa/silk-vpc-dev/-/blob/master/Introduction.MD]  
+## Installation instructions
+* https://gitlab.com/sballa/silk-vpc-dev/-/blob/master/Installation%20Instructions.MD
 
 ## References
 * SiLK - https://tools.netsa.cert.org/silk/
